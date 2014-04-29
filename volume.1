@@ -25,14 +25,15 @@ This is the default.
 .TP 5
 .B t[oggle]
 .SS AMOUNT
-.TP 5
-Defaults to 5.
+Defaults to 5 decibels.
+This option is irrelevant to toggling.
 .SH EXAMPLES
 .LP
-.B volume s 5
+.B volume h 5
+increase headphone volume by 5 db.
+.SH CONFIGURATION
 .LP
-I suggest adding:
-
+You might want to add something like:
 .IP
 "volume toggle"
 .IP
@@ -48,13 +49,10 @@ I suggest adding:
 .LP
 to your 
 .B "$HOME/.xbindkeys"
-
 .SH EXIT STATUS
 exits non-zero on error.
 .SH AUTHOR
 Noah Birnel
-.SH HISTORY
-.SH FILES
 .SH BUGS
 Probably.
 .SH SEE ALSO
@@ -63,7 +61,7 @@ Probably.
 .TP
 .BR xbindkeys(1)
 .SH LICENSE
-Copyright 2014  Noah Birnel
+Copyright 2014 Noah Birnel
 .sp
 Do whatever you want with this software.
 
