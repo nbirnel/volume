@@ -1,0 +1,92 @@
+#!/bin/sh
+
+name="Master"
+change="Volume"
+amount=5
+op='+'
+MAX=74
+MIN=0
+
+warn() {
+    echo $@ >&2
+}
+
+die() {
+    status=$1
+    shift
+    warn $@
+    exit $status
+}
+
+usage() {
+    die 1 "Usage: $(basename $0) [mhbs] [idt] {AMOUNT}"
+}
+
+Switch() {
+    if [ "$1" = "on" ]; then
+        echo "off"
+    else
+        echo "on"
+    fi
+}
+
+Volume() {
+    n=$(expr $1 $op $amount)
+    test $n -gt $MAX  && n=$MAX
+    test $n -lt $MIN  && n=$MIN
+    echo $n
+}
+
+while [ $# -gt 0 ]; do
+    case $1 in 
+      -v)
+        verbose=true
+        shift
+        ;;
+      m*)
+        name="Master"
+        shift
+        ;;
+      h*)
+        name="Headphone"
+        shift
+        ;;
+      b*)
+        name="Beep"
+        shift
+        ;;
+      s*)
+        name="Speaker"
+        shift
+        ;;
+      i*)
+        change="Volume"
+        op='+'
+        shift
+        ;;
+      d*)
+        change="Volume"
+        op='-'
+        shift
+        ;;
+      t*)
+        change="Switch"
+        shift
+        ;;
+      [0-9]*)
+        amount=$1
+        shift
+        ;;
+      *)
+        usage
+        ;;
+    esac
+done
+
+
+control="iface=MIXER,name='$name Playback $change'"
+current="$(amixer cget "$control" | sed -n 's/\s*: values=\([^,]*\).*/\1/p')"
+new=$($change $current)
+
+test $verbose && echo amixer cset "$control" $new
+                      amixer cset "$control" $new

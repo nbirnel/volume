@@ -1,0 +1,3 @@
+#!/bin/sh
+
+amixer cset "iface=MIXER,name='Master Playback Switch'" $(if amixer cget "iface=MIXER,name='Master Playback Switch'" | grep -qs ': values=on'; then echo "off"; else echo "on"; fi) > /dev/null
