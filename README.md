@@ -15,10 +15,9 @@
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
 <a href="#COMMANDS">COMMANDS</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#CONFIGURATION">CONFIGURATION</a><br>
 <a href="#EXIT STATUS">EXIT STATUS</a><br>
 <a href="#AUTHOR">AUTHOR</a><br>
-<a href="#HISTORY">HISTORY</a><br>
-<a href="#FILES">FILES</a><br>
 <a href="#BUGS">BUGS</a><br>
 <a href="#SEE ALSO">SEE ALSO</a><br>
 <a href="#LICENSE">LICENSE</a><br>
@@ -99,18 +98,24 @@ s[peaker]</b></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>AMOUNT</b>
 <br>
-Defaults to 5.</p>
+Defaults to 5 decibels. This option is irrelevant to
+toggling.</p>
 
 <h2>EXAMPLES
 <a name="EXAMPLES"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>volume s
-5</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>volume h
+5</b> increase headphone volume by 5 db.</p>
 
-<p style="margin-left:11%; margin-top: 1em">I suggest
-adding:</p>
+<h2>CONFIGURATION
+<a name="CONFIGURATION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">You might want
+to add something like:</p>
 
 <p style="margin-left:22%; margin-top: 1em">&quot;volume
 toggle&quot;</p>
@@ -147,16 +152,6 @@ on error.</p>
 
 
 <p style="margin-left:11%; margin-top: 1em">Noah Birnel</p>
-
-<h2>HISTORY
-<a name="HISTORY"></a>
-</h2>
-
-
-<h2>FILES
-<a name="FILES"></a>
-</h2>
-
 
 <h2>BUGS
 <a name="BUGS"></a>
