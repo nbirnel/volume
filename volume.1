@@ -1,0 +1,70 @@
+.# vim: ft=nroff
+.TH volume 1 volume\-__0.0.1
+.SH NAME
+volume \- a simple wrapper around amixer for changing audio volumes
+.SH SYNOPSIS
+.B volume [CONTROL] [DIRECTION] [AMOUNT]
+.SH DESCRIPTION
+.B volume
+changes the volume of the given control.
+.SH CONTROLS
+.TP 5
+.B m[aster]
+This is the default.
+.TP 5
+.B h[eadphones]
+.TP 5
+.B b[eep]
+.TP 5
+.B s[peaker]
+.SH DIRECTION
+.TP 5
+.B +
+This is the default.
+.TP 5
+.B -
+.TP 5
+.B t[oggle]
+.SH AMOUNT
+.TP 5
+Defaults to 5.
+.SH EXAMPLES
+.LP
+.B volume s 5
+.LP
+I suggest adding:
+
+.IP
+"volume toggle"
+.IP
+    XF86AudioMute
+.IP
+"volume decrease"
+.IP
+    XF86AudioLowerVolume
+.IP
+"volume increase"
+.IP
+    XF86AudioRaiseVolume
+.LP
+to your 
+.B "$HOME/.xbindkeys"
+
+.SH EXIT STATUS
+exits non-zero on error.
+.SH AUTHOR
+Noah Birnel
+.SH HISTORY
+.SH FILES
+.SH BUGS
+Probably.
+.SH SEE ALSO
+.TP
+.BR amixer(1)
+.TP
+.BR xbindkeys(1)
+.SH LICENSE
+Copyright 2014  Noah Birnel
+.sp
+Do whatever you want with this software.
+

@@ -51,10 +51,6 @@ while [ $# -gt 0 ]; do
         name="Headphone"
         shift
         ;;
-      b*)
-        name="Beep"
-        shift
-        ;;
       s*)
         name="Speaker"
         shift
