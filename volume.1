@@ -7,21 +7,31 @@ volume \- a simple wrapper around amixer for changing audio volumes
 .B volume [CONTROL] [DIRECTION] [AMOUNT]
 .LP
 .B volume [CONTROL] on
+.LP
+.B volume a[lternate]
 .SH DESCRIPTION
 .B volume
 changes the volume of the given control.
+.LP
 In the first form,
 .B CONTROL
 is changed in 
 .B DIRECTION
 by 
 .B AMOUNT.
+.LP
 In the second form,
 .B CONTROL
 is turned on, 
 and other 
 .B CONTROLs
 are turned off.
+(\fBMASTER\fR is turned on.)
+.LP
+In the third form,
+Headphone and Speaker are swapped,
+defaulting to Headphone on if both are on,
+and to Speaker on if both are off.
 (\fBMASTER\fR is turned on.)
 .SH COMMANDS
 .SS CONTROLS
@@ -51,7 +61,7 @@ increase headphone volume by 5 db.
 .LP
 You might want to add something like:
 .IP
-"volume toggle"
+"volume alternate"
 .IP
     XF86AudioMute
 .IP

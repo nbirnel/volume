@@ -37,7 +37,11 @@ Volume() {
     echo $n
 }
 
-set_control() {
+get() {
+    amixer cget "$1" | sed -n 's/\s*: values=\([^,]*\).*/\1/p'
+}
+
+set_to() {
     to_set="$1"
     new_val="$2"
 
@@ -47,14 +51,14 @@ set_control() {
 
 set_on() {
     master="iface=MIXER,name='Master Playback Switch'"
-    set_control "$master" off >/dev/null
+    set_to "$master" off >/dev/null
     for i in Speaker Headphone; do
         status="off"
         control="iface=MIXER,name='$i Playback Switch'"
         test "$i" = "$1" && status="on"
-        set_control "$control" $status
+        set_to "$control" $status
     done
-    set_control "$master" on
+    set_to "$master" on
 }
 
 while [ $# -gt 0 ]; do
@@ -97,19 +101,29 @@ while [ $# -gt 0 ]; do
         on=1
         shift
         ;;
+      a*)
+        alt=1
+        shift
+        ;;
       *)
         usage
         ;;
     esac
 done
 
-
-
 if [ -n "$on" ]; then
     set_on $name
+elif [ -n "$alt" ]; then
+    control="iface=MIXER,name='Speaker Playback Switch'"
+    current="$(get "$control")"
+    if [ "$current" = "off" ]; then
+        set_on Speaker
+    else
+        set_on Headphone
+    fi
 else
     control="iface=MIXER,name='$name Playback $change'"
-    current="$(amixer cget "$control" | sed -n 's/\s*: values=\([^,]*\).*/\1/p')"
+    current="$(get "$control")"
     new=$($change $current)
-    set_control "$control" $new
+    set_to "$control" $new
 fi
