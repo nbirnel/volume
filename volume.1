@@ -3,10 +3,26 @@
 .SH NAME
 volume \- a simple wrapper around amixer for changing audio volumes
 .SH SYNOPSIS
+.LP
 .B volume [CONTROL] [DIRECTION] [AMOUNT]
+.LP
+.B volume [CONTROL] on
 .SH DESCRIPTION
 .B volume
 changes the volume of the given control.
+In the first form,
+.B CONTROL
+is changed in 
+.B DIRECTION
+by 
+.B AMOUNT.
+In the second form,
+.B CONTROL
+is turned on, 
+and other 
+.B CONTROLs
+are turned off.
+(\fBMASTER\fR is turned on.)
 .SH COMMANDS
 .SS CONTROLS
 .TP 5
@@ -39,16 +55,22 @@ You might want to add something like:
 .IP
     XF86AudioMute
 .IP
-"volume decrease"
+"volume -"
 .IP
     XF86AudioLowerVolume
 .IP
-"volume increase"
+"volume +"
 .IP
     XF86AudioRaiseVolume
 .LP
 to your 
 .B "$HOME/.xbindkeys"
+and add
+.IP
+xbindkeys
+.LP
+to your 
+.B $HOME/.xinitrc
 .SH EXIT STATUS
 exits non-zero on error.
 .SH AUTHOR
