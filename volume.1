@@ -4,11 +4,11 @@
 volume \- a simple wrapper around amixer for changing audio volumes
 .SH SYNOPSIS
 .LP
-.B volume [CONTROL] [DIRECTION] [AMOUNT]
+.B volume [-v] [CONTROL] [DIRECTION] [AMOUNT]
 .LP
-.B volume [CONTROL] on
+.B volume [-v] [CONTROL] on
 .LP
-.B volume a[lternate]
+.B volume [-v] a[lternate]
 .SH DESCRIPTION
 .B volume
 changes the volume of the given control.
@@ -33,6 +33,11 @@ headphone and speaker are swapped,
 defaulting to headphone on if both are on,
 and to speaker on if both are off.
 (Master is always turned on.)
+.SH OPTIONS
+.TP 5
+.B -v
+Print what is being done to standard out. 
+Useful for scripting with GUI notifiers.
 .SH COMMANDS
 .SS CONTROLS
 .TP 5
@@ -66,17 +71,21 @@ decrease headphone volume by 5 db.
 swap between headphones and speakers.
 .SH CONFIGURATION
 .LP
-You might want to add something like:
+To use your multimedia keys using
+.B xbindkeys(1)
+and get notifications using 
+.B dzen(1)
+you might want to add something like:
 .IP
-"volume alternate"
+"volume -v alternate | dzen2 -l 2 -p 1 -e 'onstart=uncollapse' -ta l"
 .IP
     XF86AudioMute
 .IP
-"volume -"
+"volume -v - | dzen2 -p 1 -ta l"
 .IP
     XF86AudioLowerVolume
 .IP
-"volume +"
+"volume -v + | dzen2 -p 1 -ta l"
 .IP
     XF86AudioRaiseVolume
 .LP
@@ -98,6 +107,10 @@ Probably others.
 .SH SEE ALSO
 .TP
 .BR amixer(1)
+.TP
+.BR alsamixer(1)
+.TP
+.BR dzen(1)
 .TP
 .BR xbindkeys(1)
 .SH LICENSE
