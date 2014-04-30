@@ -26,13 +26,13 @@ is turned on,
 and other 
 .B CONTROLs
 are turned off.
-(\fBMASTER\fR is turned on.)
+(Master is always turned on.)
 .LP
 In the third form,
-Headphone and Speaker are swapped,
-defaulting to Headphone on if both are on,
-and to Speaker on if both are off.
-(\fBMASTER\fR is turned on.)
+headphone and speaker are swapped,
+defaulting to headphone on if both are on,
+and to speaker on if both are off.
+(Master is always turned on.)
 .SH COMMANDS
 .SS CONTROLS
 .TP 5
@@ -50,13 +50,20 @@ This is the default.
 .B -
 .TP 5
 .B t[oggle]
+Toggle on or off.
 .SS AMOUNT
 Defaults to 5 decibels.
 This option is irrelevant to toggling.
 .SH EXAMPLES
 .LP
-.B volume h 5
-increase headphone volume by 5 db.
+.B volume
+increase master volume by 5 db.
+.LP
+.B volume h -
+decrease headphone volume by 5 db.
+.LP
+.B volume a
+swap between headphones and speakers.
 .SH CONFIGURATION
 .LP
 You might want to add something like:
@@ -86,7 +93,8 @@ exits non-zero on error.
 .SH AUTHOR
 Noah Birnel
 .SH BUGS
-Probably.
+I doubt the hardcoded values work for all audio cards.
+Probably others.
 .SH SEE ALSO
 .TP
 .BR amixer(1)
