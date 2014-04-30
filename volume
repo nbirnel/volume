@@ -45,8 +45,8 @@ set_to() {
     to_set="$1"
     new_val="$2"
 
-    test $verbose && echo amixer cset "$to_set" $new_val
-    amixer cset "$to_set" $new_val
+    amixer cset "$to_set" $new_val >/dev/null
+    test $verbose && echo "$to_set" $new_val
 }
 
 set_on() {
