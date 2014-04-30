@@ -47,7 +47,7 @@ set_control() {
 
 set_on() {
     master="iface=MIXER,name='Master Playback Switch'"
-    set_control "$master" off
+    set_control "$master" off >/dev/null
     for i in Speaker Headphone; do
         status="off"
         control="iface=MIXER,name='$i Playback Switch'"
