@@ -113,6 +113,3 @@ else
     new=$($change $current)
     set_control "$control" $new
 fi
-
-#test $verbose && echo amixer cset "$control" $new
-#                      amixer cset "$control" $new
