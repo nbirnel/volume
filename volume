@@ -2,7 +2,7 @@
 
 name="Master"
 change="Volume"
-amount=5
+amount=4
 op='+'
 MAX=74
 MIN=0
